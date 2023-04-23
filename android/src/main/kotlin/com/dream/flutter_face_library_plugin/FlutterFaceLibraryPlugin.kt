@@ -21,14 +21,14 @@ class FlutterFaceLibraryPlugin : FlutterPlugin, MethodCallHandler {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_face_library_plugin")
+    override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        channel = MethodChannel(binding.binaryMessenger, "flutter_face_library_plugin")
         channel.setMethodCallHandler(this)
         FaceLibraryApi.FaceRequestApi.setup(
-            flutterPluginBinding.binaryMessenger,
+            binding.binaryMessenger,
             FaceRequestApiImpl()
         )
-        val faceResultApi = FaceLibraryApi.FaceResultApi(flutterPluginBinding.binaryMessenger)
+        val faceResultApi = FaceLibraryApi.FaceResultApi(binding.binaryMessenger)
         FaceHelper.getInstance().setListener(object : FaceHelperListener {
             override fun onError(code: Int, msg: String?) {
                 val result = FaceLibraryApi.FaceResult()
@@ -114,10 +114,13 @@ class FlutterFaceLibraryPlugin : FlutterPlugin, MethodCallHandler {
                 faceResultApi.buttonClickCallback("pick_car_by_berth") { }
             }
         })
+        // 启动人脸识别服务
+        FaceHelper.getInstance().startFaceService(binding.applicationContext)
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
+        FaceHelper.getInstance().stopFaceService(binding.applicationContext)
         FaceLibraryApi.FaceRequestApi.setup(binding.binaryMessenger, null)
         FaceHelper.getInstance().setListener(null)
     }
