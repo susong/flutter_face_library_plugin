@@ -9,6 +9,7 @@ class FaceApi implements FaceResultApi {
 
   FaceApi._internal() {
     _faceRequestApi = FaceRequestApi();
+    FaceResultApi.setup(this);
   }
 
   static final FaceApi _instance = FaceApi._internal();
