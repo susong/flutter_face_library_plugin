@@ -56,13 +56,23 @@ abstract class FaceResultApi {
 
   void faceRecognitionTipsCallback(FaceResult faceResult);
 
+  void cancelFaceRegisterAndRecognitionCallback(FaceResult faceResult);
+
+  void addFaceDataCallback(FaceResult faceResult);
+
+  void removeFaceDataCallback(FaceResult faceResult);
+
+  void syncFaceDataCallback(FaceResult faceResult);
+
+  void cleanFaceDataDataCallback(FaceResult faceResult);
+
   void faceDetectedCallback(FaceResult faceResult);
 
   void noFaceDetectedCallback(FaceResult faceResult);
 
-  void manualCancelFaceRegisterCallback();
+  void manualCancelFaceRegisterCallback(FaceResult faceResult);
 
-  void manualCancelFaceRecognitionCallback();
+  void manualCancelFaceRecognitionCallback(FaceResult faceResult);
 
   void buttonClickCallback(String buttonType);
 }

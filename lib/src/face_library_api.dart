@@ -361,10 +361,15 @@ abstract class FaceResultApi {
   void faceRegisterTipsCallback(FaceResult faceResult);
   void faceRecognitionCallback(FaceResult faceResult);
   void faceRecognitionTipsCallback(FaceResult faceResult);
+  void cancelFaceRegisterAndRecognitionCallback(FaceResult faceResult);
+  void addFaceDataCallback(FaceResult faceResult);
+  void removeFaceDataCallback(FaceResult faceResult);
+  void syncFaceDataCallback(FaceResult faceResult);
+  void cleanFaceDataDataCallback(FaceResult faceResult);
   void faceDetectedCallback(FaceResult faceResult);
   void noFaceDetectedCallback(FaceResult faceResult);
-  void manualCancelFaceRegisterCallback();
-  void manualCancelFaceRecognitionCallback();
+  void manualCancelFaceRegisterCallback(FaceResult faceResult);
+  void manualCancelFaceRecognitionCallback(FaceResult faceResult);
   void buttonClickCallback(String buttonType);
   static void setup(FaceResultApi? api, {BinaryMessenger? binaryMessenger}) {
     {
@@ -449,6 +454,86 @@ abstract class FaceResultApi {
     }
     {
       final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.FaceResultApi.cancelFaceRegisterAndRecognitionCallback', codec, binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.cancelFaceRegisterAndRecognitionCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.cancelFaceRegisterAndRecognitionCallback was null, expected non-null FaceResult.');
+          api.cancelFaceRegisterAndRecognitionCallback(arg_faceResult!);
+          return;
+        });
+      }
+    }
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.FaceResultApi.addFaceDataCallback', codec, binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.addFaceDataCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.addFaceDataCallback was null, expected non-null FaceResult.');
+          api.addFaceDataCallback(arg_faceResult!);
+          return;
+        });
+      }
+    }
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.FaceResultApi.removeFaceDataCallback', codec, binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.removeFaceDataCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.removeFaceDataCallback was null, expected non-null FaceResult.');
+          api.removeFaceDataCallback(arg_faceResult!);
+          return;
+        });
+      }
+    }
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.FaceResultApi.syncFaceDataCallback', codec, binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.syncFaceDataCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.syncFaceDataCallback was null, expected non-null FaceResult.');
+          api.syncFaceDataCallback(arg_faceResult!);
+          return;
+        });
+      }
+    }
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.FaceResultApi.cleanFaceDataDataCallback', codec, binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.cleanFaceDataDataCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.cleanFaceDataDataCallback was null, expected non-null FaceResult.');
+          api.cleanFaceDataDataCallback(arg_faceResult!);
+          return;
+        });
+      }
+    }
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
           'dev.flutter.pigeon.FaceResultApi.faceDetectedCallback', codec, binaryMessenger: binaryMessenger);
       if (api == null) {
         channel.setMessageHandler(null);
@@ -486,8 +571,11 @@ abstract class FaceResultApi {
         channel.setMessageHandler(null);
       } else {
         channel.setMessageHandler((Object? message) async {
-          // ignore message
-          api.manualCancelFaceRegisterCallback();
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.manualCancelFaceRegisterCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.manualCancelFaceRegisterCallback was null, expected non-null FaceResult.');
+          api.manualCancelFaceRegisterCallback(arg_faceResult!);
           return;
         });
       }
@@ -499,8 +587,11 @@ abstract class FaceResultApi {
         channel.setMessageHandler(null);
       } else {
         channel.setMessageHandler((Object? message) async {
-          // ignore message
-          api.manualCancelFaceRecognitionCallback();
+          assert(message != null, 'Argument for dev.flutter.pigeon.FaceResultApi.manualCancelFaceRecognitionCallback was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final FaceResult? arg_faceResult = (args[0] as FaceResult?);
+          assert(arg_faceResult != null, 'Argument for dev.flutter.pigeon.FaceResultApi.manualCancelFaceRecognitionCallback was null, expected non-null FaceResult.');
+          api.manualCancelFaceRecognitionCallback(arg_faceResult!);
           return;
         });
       }

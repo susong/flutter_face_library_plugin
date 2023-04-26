@@ -73,7 +73,7 @@ class FlutterFaceLibraryPlugin : FlutterPlugin, MethodCallHandler {
                 result.useType = entity?.useType?.toLong()
                 result.tag = entity?.tag
                 result.which = entity?.which?.toLong()
-                faceResultApi.faceRecognitionTipsCallback(result) { }
+                faceResultApi.faceRegisterCallback(result) { }
             }
 
             override fun onFaceRecognitionResult(entity: FaceRecognitionEntity?) {
@@ -90,20 +90,34 @@ class FlutterFaceLibraryPlugin : FlutterPlugin, MethodCallHandler {
             }
 
             override fun onCancelFaceRegisterAndRecognitionResult(code: Int, msg: String?) {
+                val result = FaceLibraryApi.FaceResult()
+                result.code = code.toLong()
+                result.msg = msg
+                faceResultApi.cancelFaceRegisterAndRecognitionCallback(result) {}
             }
 
             override fun onSyncFaceDataResult(code: Int, msg: String?) {
+                val result = FaceLibraryApi.FaceResult()
+                result.code = code.toLong()
+                result.msg = msg
+                faceResultApi.syncFaceDataCallback(result) {}
             }
 
             override fun onRemoveFaceDataResult(code: Int, msg: String?) {
+                val result = FaceLibraryApi.FaceResult()
+                result.code = code.toLong()
+                result.msg = msg
+                faceResultApi.cleanFaceDataDataCallback(result) {}
             }
 
             override fun onManualCancelFaceRegister() {
-                faceResultApi.manualCancelFaceRegisterCallback { }
+                val result = FaceLibraryApi.FaceResult()
+                faceResultApi.manualCancelFaceRegisterCallback(result) { }
             }
 
             override fun onManualCancelFaceRecognition() {
-                faceResultApi.manualCancelFaceRecognitionCallback { }
+                val result = FaceLibraryApi.FaceResult()
+                faceResultApi.manualCancelFaceRecognitionCallback(result) { }
             }
 
             override fun onPickCarByPlate() {

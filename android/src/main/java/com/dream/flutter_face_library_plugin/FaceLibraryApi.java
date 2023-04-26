@@ -630,6 +630,41 @@ public class FaceLibraryApi {
         callback.reply(null);
       });
     }
+    public void cancelFaceRegisterAndRecognitionCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
+      BasicMessageChannel<Object> channel =
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.cancelFaceRegisterAndRecognitionCallback", getCodec());
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
+        callback.reply(null);
+      });
+    }
+    public void addFaceDataCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
+      BasicMessageChannel<Object> channel =
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.addFaceDataCallback", getCodec());
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
+        callback.reply(null);
+      });
+    }
+    public void removeFaceDataCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
+      BasicMessageChannel<Object> channel =
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.removeFaceDataCallback", getCodec());
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
+        callback.reply(null);
+      });
+    }
+    public void syncFaceDataCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
+      BasicMessageChannel<Object> channel =
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.syncFaceDataCallback", getCodec());
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
+        callback.reply(null);
+      });
+    }
+    public void cleanFaceDataDataCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
+      BasicMessageChannel<Object> channel =
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.cleanFaceDataDataCallback", getCodec());
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
+        callback.reply(null);
+      });
+    }
     public void faceDetectedCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.faceDetectedCallback", getCodec());
@@ -644,17 +679,17 @@ public class FaceLibraryApi {
         callback.reply(null);
       });
     }
-    public void manualCancelFaceRegisterCallback(Reply<Void> callback) {
+    public void manualCancelFaceRegisterCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.manualCancelFaceRegisterCallback", getCodec());
-      channel.send(null, channelReply -> {
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
         callback.reply(null);
       });
     }
-    public void manualCancelFaceRecognitionCallback(Reply<Void> callback) {
+    public void manualCancelFaceRecognitionCallback(@NonNull FaceResult faceResultArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.FaceResultApi.manualCancelFaceRecognitionCallback", getCodec());
-      channel.send(null, channelReply -> {
+      channel.send(new ArrayList<Object>(Arrays.asList(faceResultArg)), channelReply -> {
         callback.reply(null);
       });
     }

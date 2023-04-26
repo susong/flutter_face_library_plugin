@@ -21,50 +21,76 @@ class FaceApi implements FaceResultApi {
   FaceResultCallback? _faceRegisterTipsCallback;
   FaceResultCallback? _faceRecognitionCallback;
   FaceResultCallback? _faceRecognitionTipsCallback;
+  FaceResultCallback? _cancelFaceRegisterAndRecognitionCallback;
+  FaceResultCallback? _addFaceDataCallback;
+  FaceResultCallback? _removeFaceDataCallback;
+  FaceResultCallback? _syncFaceDataCallback;
+  FaceResultCallback? _cleanFaceDataDataCallback;
   FaceResultCallback? _faceDetectedCallback;
   FaceResultCallback? _noFaceDetectedCallback;
-  FaceVoidCallback? _manualCancelFaceRegisterCallback;
-  FaceVoidCallback? _manualCancelFaceRecognitionCallback;
+  FaceResultCallback? _manualCancelFaceRegisterCallback;
+  FaceResultCallback? _manualCancelFaceRecognitionCallback;
   FaceButtonClickCallback? _buttonClickCallback;
 
   void setFaceErrorCallback(FaceResultCallback callback) {
-    this._faceErrorCallback = callback;
+    _faceErrorCallback = callback;
   }
 
   void setFaceRegisterCallback(FaceResultCallback callback) {
-    this._faceRegisterCallback = callback;
+    _faceRegisterCallback = callback;
   }
 
   void setFaceRegisterTipsCallback(FaceResultCallback callback) {
-    this._faceRegisterTipsCallback = callback;
+    _faceRegisterTipsCallback = callback;
   }
 
   void setFaceRecognitionCallback(FaceResultCallback callback) {
-    this._faceRecognitionCallback = callback;
+    _faceRecognitionCallback = callback;
   }
 
   void setFaceRecognitionTipsCallback(FaceResultCallback callback) {
-    this._faceRecognitionTipsCallback = callback;
+    _faceRecognitionTipsCallback = callback;
+  }
+
+  void setCancelFaceRegisterAndRecognitionCallback(
+      FaceResultCallback callback) {
+    _cancelFaceRegisterAndRecognitionCallback = callback;
+  }
+
+  void setAddFaceDataCallback(FaceResultCallback callback) {
+    _addFaceDataCallback = callback;
+  }
+
+  void setRemoveFaceDataCallback(FaceResultCallback callback) {
+    _removeFaceDataCallback = callback;
+  }
+
+  void setSyncFaceDataCallback(FaceResultCallback callback) {
+    _syncFaceDataCallback = callback;
+  }
+
+  void setCleanFaceDataDataCallback(FaceResultCallback callback) {
+    _cleanFaceDataDataCallback = callback;
   }
 
   void setFaceDetectedCallback(FaceResultCallback callback) {
-    this._faceDetectedCallback = callback;
+    _faceDetectedCallback = callback;
   }
 
   void setNoFaceDetectedCallback(FaceResultCallback callback) {
-    this._noFaceDetectedCallback = callback;
+    _noFaceDetectedCallback = callback;
   }
 
-  void setManualCancelFaceRegisterCallback(FaceVoidCallback callback) {
-    this._manualCancelFaceRegisterCallback = callback;
+  void setManualCancelFaceRegisterCallback(FaceResultCallback callback) {
+    _manualCancelFaceRegisterCallback = callback;
   }
 
-  void setManualCancelFaceRecognitionCallback(FaceVoidCallback callback) {
-    this._manualCancelFaceRecognitionCallback = callback;
+  void setManualCancelFaceRecognitionCallback(FaceResultCallback callback) {
+    _manualCancelFaceRecognitionCallback = callback;
   }
 
   void setButtonClickCallback(FaceButtonClickCallback callback) {
-    this._buttonClickCallback = callback;
+    _buttonClickCallback = callback;
   }
 
   Future<FaceResult> faceRegister(bool isShowPreviewView, String licenseNo) {
@@ -131,6 +157,41 @@ class FaceApi implements FaceResultApi {
   }
 
   @override
+  void cancelFaceRegisterAndRecognitionCallback(FaceResult result) {
+    if (_cancelFaceRegisterAndRecognitionCallback != null) {
+      _cancelFaceRegisterAndRecognitionCallback!(result);
+    }
+  }
+
+  @override
+  void addFaceDataCallback(FaceResult result) {
+    if (_addFaceDataCallback != null) {
+      _addFaceDataCallback!(result);
+    }
+  }
+
+  @override
+  void removeFaceDataCallback(FaceResult result) {
+    if (_removeFaceDataCallback != null) {
+      _removeFaceDataCallback!(result);
+    }
+  }
+
+  @override
+  void syncFaceDataCallback(FaceResult result) {
+    if (_syncFaceDataCallback != null) {
+      _syncFaceDataCallback!(result);
+    }
+  }
+
+  @override
+  void cleanFaceDataDataCallback(FaceResult result) {
+    if (_cleanFaceDataDataCallback != null) {
+      _cleanFaceDataDataCallback!(result);
+    }
+  }
+
+  @override
   void faceDetectedCallback(FaceResult result) {
     if (_faceDetectedCallback != null) {
       _faceDetectedCallback!(result);
@@ -145,16 +206,16 @@ class FaceApi implements FaceResultApi {
   }
 
   @override
-  void manualCancelFaceRegisterCallback() {
+  void manualCancelFaceRegisterCallback(FaceResult result) {
     if (_manualCancelFaceRegisterCallback != null) {
-      _manualCancelFaceRegisterCallback!();
+      _manualCancelFaceRegisterCallback!(result);
     }
   }
 
   @override
-  void manualCancelFaceRecognitionCallback() {
+  void manualCancelFaceRecognitionCallback(FaceResult result) {
     if (_manualCancelFaceRecognitionCallback != null) {
-      _manualCancelFaceRecognitionCallback!();
+      _manualCancelFaceRecognitionCallback!(result);
     }
   }
 
