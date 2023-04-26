@@ -68,6 +68,7 @@ class FlutterFaceLibraryPlugin : FlutterPlugin, MethodCallHandler {
                 result.msg = entity?.msg
                 result.detail = entity?.detail
                 result.licenseNo = entity?.licenseNo
+                result.faceId = entity?.faceId
                 result.faceFeature = entity?.faceFeature
                 result.faceImgPath = entity?.faceImgPath
                 result.useType = entity?.useType?.toLong()
