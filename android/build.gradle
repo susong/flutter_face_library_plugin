@@ -43,11 +43,11 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 24
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.github.susong.mf_face_library:mf_facelibrary:0.0.5'
+    implementation 'com.github.susong.mf_face_library:mf_facelibrary:main_v0.0.8'
 }

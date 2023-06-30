@@ -21,6 +21,10 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+// 解决 Flutter couldn‘t find "libflutter.so" 的问题
+// 参考：https://blog.csdn.net/z2008q/article/details/108621188
+//project.setProperty('target-platform', 'android-arm')
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -47,10 +51,13 @@ android {
         applicationId "com.dream.flutter_face_library_plugin_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 24
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
     }
 
     buildTypes {
@@ -60,6 +67,11 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/*'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+    }
 }
 
 flutter {
@@ -68,4 +80,10 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.blankj:utilcodex:1.30.6'
+    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    implementation 'com.guolindev.permissionx:permissionx:1.6.2'
+    implementation 'com.github.susong.mf_face_library:baselibrary:main_v0.0.8'
+    implementation 'com.github.susong.mf_face_library:attrbutelibrary:main_v0.0.8'
+    implementation 'com.github.susong.mf_face_library:mf_facelibrary:main_v0.0.8'
 }

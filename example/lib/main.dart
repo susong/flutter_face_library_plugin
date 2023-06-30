@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_face_library_plugin/flutter_face_library.dart';
 
@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _flutterFaceLibraryPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _flutterFaceLibraryPlugin.getPlatformVersion() ??
+          'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -55,7 +55,75 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Running on: $_platformVersion\n'),
+              ElevatedButton(
+                onPressed: () {
+                  FaceApi().faceRegister(true, "粤B12345");
+                },
+                child: const Text("faceRegister"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  FaceApi().faceRecognition(true);
+                },
+                child: const Text("faceRecognition"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  FaceApi().cancelFaceRegisterAndRecognition();
+                },
+                child: const Text("cancelFaceRegisterAndRecognition"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var faceInfo = FaceInfo(
+                    faceId: "faceId_1",
+                    faceFeature: "faceFeature_1",
+                  );
+                  FaceApi().addFaceData(faceInfo);
+                },
+                child: const Text("addFaceData"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var faceInfo = FaceInfo(
+                    faceId: "faceId_1",
+                    faceFeature: "faceFeature_1",
+                  );
+                  FaceApi().removeFaceData(faceInfo);
+                },
+                child: const Text("removeFaceData"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var faceInfos = <FaceInfo>[];
+                  faceInfos.add(
+                    FaceInfo(
+                      faceId: "faceId_1",
+                      faceFeature: "faceFeature_1",
+                    ),
+                  );
+                  faceInfos.add(
+                    FaceInfo(
+                      faceId: "faceId_2",
+                      faceFeature: "faceFeature_2",
+                    ),
+                  );
+                  FaceApi().syncFaceData(faceInfos);
+                },
+                child: const Text("syncFaceData"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  FaceApi().cleanFaceData();
+                },
+                child: const Text("cleanFaceData"),
+              ),
+            ],
+          ),
         ),
       ),
     );
