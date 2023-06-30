@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 
 // 解决 Flutter couldn‘t find "libflutter.so" 的问题
 // 参考：https://blog.csdn.net/z2008q/article/details/108621188
-//project.setProperty('target-platform', 'android-arm')
+project.setProperty('target-platform', 'android-arm')
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -83,7 +83,7 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.30.6'
     implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
     implementation 'com.guolindev.permissionx:permissionx:1.6.2'
-    implementation 'com.github.susong.mf_face_library:baselibrary:main_v0.0.8'
-    implementation 'com.github.susong.mf_face_library:attrbutelibrary:main_v0.0.8'
-    implementation 'com.github.susong.mf_face_library:mf_facelibrary:main_v0.0.8'
+    implementation 'com.github.susong.mf_face_library:baselibrary:fullscreen_v0.0.2'
+    implementation 'com.github.susong.mf_face_library:attrbutelibrary:fullscreen_v0.0.2'
+    implementation 'com.github.susong.mf_face_library:mf_facelibrary:fullscreen_v0.0.2'
 }
