@@ -83,7 +83,7 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.30.6'
     implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
     implementation 'com.guolindev.permissionx:permissionx:1.6.2'
-    implementation 'com.github.susong.mf_face_library:baselibrary:fullscreen_v0.0.2'
-    implementation 'com.github.susong.mf_face_library:attrbutelibrary:fullscreen_v0.0.2'
-    implementation 'com.github.susong.mf_face_library:mf_facelibrary:fullscreen_v0.0.2'
+    implementation 'com.github.susong.mf_face_library:baselibrary:fullscreen_v0.0.3'
+    implementation 'com.github.susong.mf_face_library:attrbutelibrary:fullscreen_v0.0.3'
+    implementation 'com.github.susong.mf_face_library:mf_facelibrary:fullscreen_v0.0.3'
 }

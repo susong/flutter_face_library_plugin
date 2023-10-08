@@ -49,5 +49,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.github.susong.mf_face_library:mf_facelibrary:fullscreen_v0.0.2'
+    implementation 'com.github.susong.mf_face_library:mf_facelibrary:fullscreen_v0.0.3'
 }
